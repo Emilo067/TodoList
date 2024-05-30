@@ -7,7 +7,6 @@ type PropsType = {
 }
 
 export const EditableSpan = memo(({ value, onChange }: PropsType) => {
-    console.log('EditableSpan called')
     const [editMode, setEditMode] = useState(false)
     const [title, setTitle] = useState(value)
 

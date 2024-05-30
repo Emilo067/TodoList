@@ -3,11 +3,11 @@ import {ChangeEvent, KeyboardEvent, memo, useState} from 'react'
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import IconButton from '@mui/material/IconButton'
 
-type PropsType = {
+export type AddItemFormPropsType = {
     addItem: (title: string) => void
 }
 
-export const AddItemForm = memo(({addItem}: PropsType) => {
+export const AddItemForm = memo(({addItem}: AddItemFormPropsType) => {
 
     console.log("AddItemForm rerendered")
 
