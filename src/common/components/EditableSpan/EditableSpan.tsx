@@ -4,9 +4,10 @@ import TextField from "@mui/material/TextField/TextField";
 type PropsType = {
     value: string
     onChange: (value: string) => void
+    disabled: boolean
 }
 
-export const EditableSpan = memo(({ value, onChange }: PropsType) => {
+export const EditableSpan = memo(({disabled, value, onChange }: PropsType) => {
     const [editMode, setEditMode] = useState(false)
     const [title, setTitle] = useState(value)
 
@@ -26,7 +27,7 @@ export const EditableSpan = memo(({ value, onChange }: PropsType) => {
 
     return (
         <>
-            {editMode ? <TextField
+            {editMode && !disabled ? <TextField
                 variant={'outlined'}
                 value={title}
                 size={'small'}
