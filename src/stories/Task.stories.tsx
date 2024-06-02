@@ -1,8 +1,9 @@
 import type {Meta, StoryObj} from '@storybook/react';
 import {fn} from "@storybook/test";
-import {Task} from "../Todolist/Task/Task";
+import {Task} from "../features/TodolistList/Todolist/Task/Task";
 import {useState} from "react";
 import {action} from "@storybook/addon-actions";
+import {TaskPriorities, TaskStatuses} from "../api/todolist-api";
 
 // More on how to set up stories at:
 // https://storybook.js.org/docs/react/writing-stories/introduction#default-export
@@ -17,7 +18,16 @@ const meta: Meta<typeof Task> = {
     tags: ['autodocs'],
     // More on argTypes:
     args: {
-        task: {id: 'taskId', title: 'JS', isDone: true},
+        task: {
+            id: 'taskId', title: 'JS', status: TaskStatuses.Completed, description: 'test task',
+            completed: false,
+            priority: TaskPriorities.Low,
+            startDate: '',
+            deadline: '',
+            todoListId: 'todolistId1',
+            order: 0,
+            addedDate: ''
+        },
         todolistId: 'totolistId',
         changeTaskStatus: fn(),
         changeTaskTitle: fn(),
@@ -38,7 +48,16 @@ export const TaskIsDoneStory: Story = {
 
 export const TaskIsNotDoneStory: Story = {
     args: {
-        task: {id: 'taskId', title: 'JS', isDone: false},
+        task: {
+            id: 'taskId', title: 'JS', status: TaskStatuses.New, description: 'test task',
+            completed: false,
+            priority: TaskPriorities.Low,
+            startDate: '',
+            deadline: '',
+            todoListId: 'todolistId1',
+            order: 0,
+            addedDate: ''
+        },
     }
 }
 
@@ -47,14 +66,14 @@ export const TaskToggleStory: Story = {
         const [task, setTask] = useState(args.task)
 
         function changeTaskStatus() {
-            setTask({...task, isDone: !task.isDone})
+            setTask({...task, status: task.status === TaskStatuses.New ? TaskStatuses.Completed : TaskStatuses.New})
         }
 
         function changeTaskTitle(todolistId: string, taskId: string, title: string) {
             setTask({...task, title})
         }
 
-        return <Task task={task} todolistId={'todolistId'} changeTaskStatus={changeTaskStatus}
+        return <Task entityStatus={'idle'} task={task} todolistId={'todolistId'} changeTaskStatus={changeTaskStatus}
                      changeTaskTitle={changeTaskTitle} removeTask={action('removed')}/>
     }
 }
