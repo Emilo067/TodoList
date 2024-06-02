@@ -5,9 +5,10 @@ import IconButton from '@mui/material/IconButton'
 
 export type AddItemFormPropsType = {
     addItem: (title: string) => void
+    disabled?: boolean
 }
 
-export const AddItemForm = memo(({addItem}: AddItemFormPropsType) => {
+export const AddItemForm = memo(({addItem, disabled}: AddItemFormPropsType) => {
 
     console.log("AddItemForm rerendered")
 
@@ -49,7 +50,7 @@ export const AddItemForm = memo(({addItem}: AddItemFormPropsType) => {
                 onChange={changeItemHandler}
                 onKeyUp={addItemOnKeyUpHandler}
             />
-            <IconButton onClick={addItemHandler} color={'primary'}>
+            <IconButton onClick={addItemHandler} color={'primary'} disabled={disabled}>
                 <AddBoxIcon/>
             </IconButton>
         </div>
