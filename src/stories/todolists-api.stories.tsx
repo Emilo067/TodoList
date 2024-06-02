@@ -9,7 +9,7 @@ export const GetTodolists = () => {
     useEffect(() => {
         // здесь мы будем делать запрос и ответ закидывать в стейт.
         // который в виде строки будем отображать в div-ке
-        todolistAPI.getTodolist().then(res => {
+        todolistAPI.getTodolists().then(res => {
             setState(res.data)
         })
     }, [])
@@ -94,15 +94,15 @@ export const UpdateTodolistTitle = () => {
     return <div>{JSON.stringify(state)}</div>
 }
 
-export const UpdateTaskTitle = () => {
-    const [state, setState] = useState<any>(null)
-    const todolistId = '8ac793b3-2cfa-4df9-8561-1d5aae7635c2'
-    const taskId = '8ea8f54e-f1d6-4f64-80ab-ccfb8ebb62d2'
-    useEffect(() => {
-        todolistAPI.updateTask(todolistId, taskId,'SOME NEW TITLE').then(res => {
-            setState(res.data)
-        })
-    }, [])
-
-    return <div>{JSON.stringify(state)}</div>
-}
+// export const UpdateTaskTitle = () => {
+//     const [state, setState] = useState<any>(null)
+//     const todolistId = '8ac793b3-2cfa-4df9-8561-1d5aae7635c2'
+//     const taskId = '8ea8f54e-f1d6-4f64-80ab-ccfb8ebb62d2'
+//     useEffect(() => {
+//         todolistAPI.updateTask(todolistId, taskId,'SOME NEW TITLE').then(res => {
+//             setState(res.data)
+//         })
+//     }, [])
+//
+//     return <div>{JSON.stringify(state)}</div>
+// }
