@@ -24,7 +24,7 @@ export const Todolist = memo(({ todolist, date, tasks }: Props) => {
 
   useEffect(() => {
     dispatch(fetchTasks(todolist.id));
-  }, [dispatch]);
+  }, [todolist.id, dispatch]);
 
   let tasksForTodolist = tasks;
   if (todolist.filter === "active") {
