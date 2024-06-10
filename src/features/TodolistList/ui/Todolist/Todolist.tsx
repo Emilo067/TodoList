@@ -1,13 +1,10 @@
 import React, { memo, useEffect } from "react";
 import { AddItemForm } from "common/components/AddItemForm/AddItemForm";
-import List from "@mui/material/List";
 import Box from "@mui/material/Box";
 import { filterButtonsContainerSx } from "features/TodolistList/ui/Todolist/Todolist.style";
-import { Task } from "features/TodolistList/ui/Todolist/TasksList/Task/Task";
 import { TodolistDomainType } from "features/TodolistList/model/todolists/todolists.reducer";
 import { TaskStatuses } from "common/enums/enums";
 import { fetchTasks, tasksThunks } from "features/TodolistList/model/tasks/tasks.reducer";
-import { useDispatch } from "react-redux";
 import { TaskType } from "features/TodolistList/api/taskApi.types";
 import { FilterTasksButtons } from "./FilterTasksButtons";
 import { TodolistTitle } from "features/TodolistList/ui/Todolist/TodolistTitle/TodolistTitle";
@@ -27,7 +24,7 @@ export const Todolist = memo(({ todolist, date, tasks }: Props) => {
 
   useEffect(() => {
     dispatch(fetchTasks(todolist.id));
-  }, []);
+  }, [dispatch]);
 
   let tasksForTodolist = tasks;
   if (todolist.filter === "active") {

@@ -25,12 +25,15 @@ export const TodolistsList: React.FC = () => {
       return;
     }
     dispatch(todolistsThunks.fetchTodolists());
-  }, []);
+  }, [isLoggedIn, dispatch]);
 
-  const addTodolistHandler = useCallback((title: string) => {
-    const thunk = todolistsThunks.addTodolist(title);
-    return dispatch(thunk).unwrap();
-  }, []);
+  const addTodolistHandler = useCallback(
+    (title: string) => {
+      const thunk = todolistsThunks.addTodolist(title);
+      return dispatch(thunk).unwrap();
+    },
+    [dispatch],
+  );
 
   if (!isLoggedIn) {
     return <Navigate to={"/login"} />;

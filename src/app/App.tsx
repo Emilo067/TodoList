@@ -47,7 +47,7 @@ function App({ demo = false }: PropsType) {
 
   useEffect(() => {
     dispatch(authThunks.initializeApp());
-  }, []);
+  }, [dispatch]);
 
   const changeModeHandler = () => {
     setThemeMode(themeMode === "light" ? "dark" : "light");
