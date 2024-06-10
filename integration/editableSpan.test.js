@@ -1,12 +1,14 @@
-describe('editableSpan', () => {
-    it('base example, visually looks correct', async () => {
-        // APIs from jest-puppeteer
-        await page.goto('http://localhost:6006/iframe.html?args=&id=todolists-editablespan--editable-span-story&viewMode=story',
-            {waitUntil: "networkidle2"});
+describe("editableSpan", () => {
+  it("base example, visually looks correct", async () => {
+    // APIs from jest-puppeteer
+    await page.goto(
+      "http://localhost:6006/iframe.html?args=&id=todolists-editablespan--editable-span-story&viewMode=story",
+      { waitUntil: "networkidle2" },
+    );
 
-        const image = await page.screenshot();
+    const image = await page.screenshot();
 
-        // API from jest-image-snapshot
-        expect(image).toMatchImageSnapshot();
-    });
+    // API from jest-image-snapshot
+    expect(image).toMatchImageSnapshot();
+  });
 });
