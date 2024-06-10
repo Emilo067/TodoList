@@ -7,7 +7,7 @@ import { LoginParamsType } from "features/auth/api/auth.api";
 import { authThunks } from "features/auth/model/auth.reducer";
 import { ResponseType } from "common/types/ResponseType";
 
-type FormikErrorType = Omit<Partial<LoginParamsType>, "captcha">;
+//type FormikErrorType = Omit<Partial<LoginParamsType>, "captcha">;
 
 export const useLogin = () => {
   const dispatch = useAppDispatch();
