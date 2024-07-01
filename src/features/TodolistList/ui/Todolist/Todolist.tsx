@@ -14,10 +14,9 @@ import { useAppDispatch } from "common/hooks/useAppDispatch";
 type Props = {
   todolist: TodolistDomainType;
   tasks: TaskType[];
-  date?: Date;
 };
 
-export const Todolist = memo(({ todolist, date, tasks }: Props) => {
+export const Todolist = memo(({ todolist, tasks }: Props) => {
   console.log("Todolist called");
 
   const dispatch = useAppDispatch();
@@ -46,7 +45,6 @@ export const Todolist = memo(({ todolist, date, tasks }: Props) => {
       <Box sx={filterButtonsContainerSx}>
         <FilterTasksButtons todolist={todolist} />
       </Box>
-      {date ? <div>{date.toLocaleDateString("ru-RU")}</div> : null}
     </div>
   );
 });
