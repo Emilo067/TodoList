@@ -25,7 +25,7 @@ export const TodolistsList: React.FC = () => {
       return;
     }
     dispatch(todolistsThunks.fetchTodolists());
-  }, [isLoggedIn, dispatch]);
+  }, [dispatch]);
 
   const addTodolistHandler = useCallback(
     (title: string) => {
@@ -50,7 +50,7 @@ export const TodolistsList: React.FC = () => {
           return (
             <Grid key={tl.id}>
               <Paper sx={{ p: "0 40px 40px 40px" }}>
-                <Todolist todolist={tl} tasks={tasks[tl.id]} date={new Date()} />
+                <Todolist todolist={tl} tasks={tasks[tl.id]} />
               </Paper>
             </Grid>
           );
