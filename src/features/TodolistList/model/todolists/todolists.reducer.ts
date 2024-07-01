@@ -9,12 +9,6 @@ const slice = createSlice({
   name: "todolists",
   initialState: [] as TodolistDomainType[],
   reducers: {
-    changeTodolistTitle: (state, action: PayloadAction<{ id: string; title: string }>) => {
-      const todo = state.find((tl) => tl.id === action.payload.id);
-      if (todo) {
-        todo.title = action.payload.title;
-      }
-    },
     changeTodolistFilter: (state, action: PayloadAction<{ id: string; filter: FilterValuesType }>) => {
       const todo = state.find((tl) => tl.id === action.payload.id);
       if (todo) {
@@ -34,6 +28,7 @@ const slice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTodolists.fulfilled, (state, action) => {
+        debugger;
         action.payload.todolists.forEach((tl: TodolistType) => {
           state.push({ ...tl, filter: "all", entityStatus: "idle" });
         });
@@ -68,6 +63,7 @@ const fetchTodolists = createAppAsyncThunk<
     const res = await todolistApi.getTodolists();
     const todolists = res.data;
     dispatch(appActions.setAppStatus({ status: "succeeded" }));
+    debugger;
     return { todolists };
   } catch (err) {
     handleServerNetworkError(err, dispatch);
