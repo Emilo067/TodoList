@@ -30,7 +30,9 @@ type PropsType = {
 };
 
 function App({ demo = false }: PropsType) {
-  const [themeMode, setThemeMode] = useState<ThemeMode>("light");
+  const LOCAL_STORAGE_THEME_KEY = "theme";
+  const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as ThemeMode;
+  const [themeMode, setThemeMode] = useState<ThemeMode>(defaultTheme);
 
   const isInitialized = useSelector<AppRootStateType, boolean>(selectIsInitialized);
   const status = useSelector<AppRootStateType, RequestStatusType>(selectStatus);
@@ -50,7 +52,9 @@ function App({ demo = false }: PropsType) {
   }, [dispatch]);
 
   const changeModeHandler = () => {
-    setThemeMode(themeMode === "light" ? "dark" : "light");
+    const newTheme = themeMode === "light" ? "dark" : "light";
+    setThemeMode(newTheme);
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
   };
 
   const logoutHandler = () => {
