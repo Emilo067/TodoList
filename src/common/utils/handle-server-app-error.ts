@@ -1,4 +1,4 @@
-import { appActions } from "app/app.reducer";
+import { appActions } from "app/model/app.reducer";
 import { ResponseType } from "common/types/ResponseType";
 import { Dispatch } from "redux";
 
@@ -10,6 +10,4 @@ export const handleServerAppError = <T>(data: ResponseType<T>, dispatch: Dispatc
       dispatch(appActions.setAppError({ error: "Some error occurred" }));
     }
   }
-
-  dispatch(appActions.setAppStatus({ status: "failed" }));
 };
