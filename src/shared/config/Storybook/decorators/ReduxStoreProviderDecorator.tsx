@@ -1,6 +1,6 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { AppRootStateType } from "app/store";
+import { AppRootStateType } from "app/store/store";
 import { combineReducers, legacy_createStore } from "redux";
 import { tasksReducer } from "features/TodolistList/model/tasks/tasks.reducer";
 import { todolistsReducer } from "features/TodolistList/model/todolists/todolists.reducer";
