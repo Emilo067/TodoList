@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { EditableSpan } from "../common/components/EditableSpan/EditableSpan";
+import { EditableSpan } from "common/components/EditableSpan/EditableSpan";
 import { fn } from "@storybook/test";
 
 // More on how to set up stories at:
