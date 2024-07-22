@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 import { Navigate } from "react-router-dom";
 import { useLogin } from "features/auth/lib/useLogin";
 
-export const Login = () => {
+const Login = () => {
   const { formik, isLoggedIn } = useLogin();
 
   if (isLoggedIn) {
@@ -60,3 +60,5 @@ export const Login = () => {
     </Grid>
   );
 };
+
+export default Login;
