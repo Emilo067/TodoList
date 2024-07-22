@@ -3,6 +3,7 @@ import { ChangeEvent, KeyboardEvent, memo, useState } from "react";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import IconButton from "@mui/material/IconButton";
 import { ResponseType } from "common/types/ResponseType";
+import { unwrapResult } from "@reduxjs/toolkit";
 
 export type AddItemFormPropsType = {
   addItem: (title: string) => Promise<any>;
@@ -10,18 +11,18 @@ export type AddItemFormPropsType = {
 };
 
 export const AddItemForm = memo(({ addItem, disabled = false }: AddItemFormPropsType) => {
-  console.log("AddItemForm rerendered");
-
   const [title, setTitle] = useState("");
   const [error, setError] = useState<string | null>(null);
 
   const addItemHandler = () => {
     if (title.trim() !== "") {
       addItem(title.trim())
+        .then(unwrapResult)
         .then((res: ResponseType) => {
           setTitle("");
         })
         .catch((rej: ResponseType) => {
+          debugger;
           setError(rej.messages[0]);
         });
     } else {
