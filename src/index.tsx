@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./app/App";
+import App from "app/ui/App";
 import { Provider } from "react-redux";
-import { store } from "app/store";
+import { store } from "app/store/store";
 import { createHashRouter, Navigate, RouterProvider } from "react-router-dom";
-import { Login } from "features/auth/ui/login/Login";
 import { TodolistsList } from "features/TodolistList/ui/TodolistList";
 import { ErrorPage } from "common/components/ErrorPage/ErrorPage";
+import { LoginAsync } from "features/auth/ui/login/Login.async";
 
 export const router = createHashRouter([
   {
@@ -21,7 +21,7 @@ export const router = createHashRouter([
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <LoginAsync />,
       },
       {
         path: "/todolists",
@@ -34,6 +34,7 @@ export const router = createHashRouter([
     element: <ErrorPage />,
   },
 ]);
+
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <Provider store={store}>
