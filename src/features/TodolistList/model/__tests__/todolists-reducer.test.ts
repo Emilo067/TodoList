@@ -6,8 +6,8 @@ import {
   todolistsThunks,
 } from "features/TodolistList/model/todolists/todolists.reducer";
 import { v1 } from "uuid";
-import { TodolistType } from "features/TodolistList/api/todolistApi";
 import { ActionTypeForTest } from "common/types/ActionTypeForTest";
+import { TodolistType } from "features/TodolistList/api/todolistApi.types";
 
 let todolistId1: string;
 let todolistId2: string;
@@ -62,14 +62,17 @@ test("correct todolist should be added", () => {
 });
 
 test("correct todolist should change its name", () => {
-  const newTitle = "New Todolist";
-  const endState = todolistsReducer(
-    startState,
-    todolistsActions.changeTodolistTitle({ id: todolistId2, title: newTitle }),
-  );
+  const action: ActionTypeForTest<typeof todolistsThunks.changeTodolistTitle.fulfilled> = {
+    type: todolistsThunks.fetchTodolists.fulfilled.type,
+    payload: {
+      todolistId: todolistId2,
+      title: "Test Title",
+    },
+  };
+  const endState = todolistsReducer(startState, action);
 
   expect(endState[0].title).toBe("What to learn");
-  expect(endState[1].title).toBe(newTitle);
+  expect(endState[1].title).toBe("Test Title");
 });
 
 test("correct filter of todolist should be changed", () => {

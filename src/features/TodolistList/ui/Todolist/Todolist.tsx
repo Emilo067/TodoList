@@ -10,6 +10,9 @@ import { FilterTasksButtons } from "./FilterTasksButtons";
 import { TodolistTitle } from "features/TodolistList/ui/Todolist/TodolistTitle/TodolistTitle";
 import { TasksList } from "./TasksList/TasksList";
 import { useAppDispatch } from "common/hooks/useAppDispatch";
+import { Paginator } from "features/Paginator/ui/Paginator";
+import { useSelector } from "react-redux";
+import { AppRootStateType } from "app/store/store";
 
 type Props = {
   todolist: TodolistDomainType;
@@ -17,9 +20,10 @@ type Props = {
 };
 
 export const Todolist = memo(({ todolist, tasks }: Props) => {
-  console.log("Todolist called");
-
   const dispatch = useAppDispatch();
+  const totalCount = useSelector<AppRootStateType, number>((state) =>
+    state.tasksPaginator[todolist.id] ? state.tasksPaginator[todolist.id].totalCount : 0,
+  );
 
   useEffect(() => {
     dispatch(fetchTasks(todolist.id));
@@ -34,7 +38,7 @@ export const Todolist = memo(({ todolist, tasks }: Props) => {
 
   const addTaskHandler = (title: string) => {
     const thunk = tasksThunks.addTask({ todolistId: todolist.id, title });
-    return dispatch(thunk).unwrap();
+    return dispatch(thunk);
   };
 
   return (
@@ -45,6 +49,7 @@ export const Todolist = memo(({ todolist, tasks }: Props) => {
       <Box sx={filterButtonsContainerSx}>
         <FilterTasksButtons todolist={todolist} />
       </Box>
+      {totalCount > 10 && <Paginator totalCount={totalCount} todolistId={todolist.id} />}
     </div>
   );
 });

@@ -1,6 +1,6 @@
 import { useAppDispatch } from "common/hooks/useAppDispatch";
 import { useSelector } from "react-redux";
-import { AppRootStateType } from "app/store";
+import { AppRootStateType } from "app/store/store";
 import { selectIsLoggedIn } from "features/auth/model/auth.selectors";
 import { FormikHelpers, useFormik } from "formik";
 import { LoginParamsType } from "features/auth/api/auth.api";

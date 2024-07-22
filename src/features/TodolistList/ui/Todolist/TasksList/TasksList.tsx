@@ -10,6 +10,7 @@ type Props = {
 };
 
 export const TasksList = ({ tasksForTodolist, todolist }: Props) => {
+  console.log("render tasks");
   return (
     <>
       {tasksForTodolist.length ? (

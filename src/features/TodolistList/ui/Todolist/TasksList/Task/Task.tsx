@@ -5,7 +5,7 @@ import { EditableSpan } from "common/components/EditableSpan/EditableSpan";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ListItem from "@mui/material/ListItem";
-import { RequestStatusType } from "app/app.reducer";
+import { RequestStatusType } from "app/model/app.reducer";
 import { TaskStatuses } from "common/enums/enums";
 import { tasksThunks } from "features/TodolistList/model/tasks/tasks.reducer";
 import { useAppDispatch } from "common/hooks/useAppDispatch";

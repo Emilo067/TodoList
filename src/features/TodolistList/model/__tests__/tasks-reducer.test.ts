@@ -1,4 +1,4 @@
-import { TasksStateType } from "app/App";
+import { TasksStateType } from "app/ui/App";
 import { todolistsThunks } from "features/TodolistList/model/todolists/todolists.reducer";
 import { tasksReducer, tasksThunks } from "features/TodolistList/model/tasks/tasks.reducer";
 import { ActionTypeForTest } from "common/types/ActionTypeForTest";

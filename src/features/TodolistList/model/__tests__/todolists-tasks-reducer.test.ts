@@ -1,4 +1,4 @@
-import { TasksStateType } from "app/App";
+import { TasksStateType } from "app/ui/App";
 import {
   TodolistDomainType,
   todolistsReducer,

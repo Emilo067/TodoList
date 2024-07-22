@@ -12,8 +12,10 @@ export const taskApi = {
   deleteTask(args: { todolistId: string; taskId: string }) {
     return instance.delete<ResponseType>(`todo-lists/${args.todolistId}/tasks/${args.taskId}`);
   },
-  getTasks(todolistId: string) {
-    return instance.get<GetTasksResponse>(`todo-lists/${todolistId}/tasks`);
+  getTasks(todolistId: string, currentPage?: number) {
+    return instance.get<GetTasksResponse>(`todo-lists/${todolistId}/tasks`, {
+      params: { count: 10, page: currentPage },
+    });
   },
   createTask(args: AddTaskArgType) {
     return instance.post<ResponseType<{ item: TaskType }>>(`todo-lists/${args.todolistId}/tasks`, {
