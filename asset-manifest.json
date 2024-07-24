@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/todolist/static/css/main.668f6167.css",
-    "main.js": "/todolist/static/js/main.291eaf36.js",
+    "main.js": "/todolist/static/js/main.8df2b561.js",
     "static/js/652.4d5f9edd.chunk.js": "/todolist/static/js/652.4d5f9edd.chunk.js",
     "static/js/854.6e0d51cd.chunk.js": "/todolist/static/js/854.6e0d51cd.chunk.js",
     "static/media/logoApp.svg": "/todolist/static/media/logoApp.7b652904073634b8097e818e891e859d.svg",
@@ -9,6 +9,6 @@
   },
   "entrypoints": [
     "static/css/main.668f6167.css",
-    "static/js/main.291eaf36.js"
+    "static/js/main.8df2b561.js"
   ]
 }
