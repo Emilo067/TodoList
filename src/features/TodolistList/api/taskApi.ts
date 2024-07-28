@@ -14,7 +14,7 @@ export const taskApi = {
   },
   getTasks(todolistId: string, currentPage?: number) {
     return instance.get<GetTasksResponse>(`todo-lists/${todolistId}/tasks`, {
-      params: { count: 5, page: currentPage },
+      params: { count: 3, page: currentPage },
     });
   },
   createTask(args: AddTaskArgType) {
