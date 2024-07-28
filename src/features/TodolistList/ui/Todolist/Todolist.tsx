@@ -49,7 +49,7 @@ export const Todolist = memo(({ todolist, tasks }: Props) => {
       <Box sx={filterButtonsContainerSx}>
         <FilterTasksButtons todolist={todolist} />
       </Box>
-      {totalCount > 10 && <Paginator totalCount={totalCount} todolistId={todolist.id} />}
+      {totalCount > 3 && <Paginator totalCount={totalCount} todolistId={todolist.id} />}
     </div>
   );
 });
