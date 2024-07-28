@@ -11,7 +11,7 @@ type Props = {
 };
 
 export const Paginator = (props: Props) => {
-  let pagesCount = Math.ceil((props.totalCount as number) / 10);
+  let pagesCount = Math.ceil((props.totalCount as number) / 3);
   const dispatch = useAppDispatch();
 
   const changePageHandler = (page: number) => {
