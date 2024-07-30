@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect } from "react";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import { TodolistDomainType, todolistsThunks } from "features/TodolistList/model/todolists/todolists.reducer";
 import { TasksStateType } from "app/ui/App";
 import { AddItemForm } from "common/components/AddItemForm/AddItemForm";
@@ -20,6 +19,14 @@ export const TodolistsList: React.FC = () => {
   const isLoggedIn = useSelector<AppRootStateType, boolean>(selectIsLoggedIn);
 
   const dispatch = useAppDispatch();
+
+  const mappedTodolists = todolists.map((tl) => {
+    return (
+      <Grid key={tl.id}>
+        <Todolist todolist={tl} tasks={tasks[tl.id]} />
+      </Grid>
+    );
+  });
 
   useEffect(() => {
     if (!isLoggedIn) {
@@ -47,15 +54,7 @@ export const TodolistsList: React.FC = () => {
       </Grid>
 
       <Grid container spacing={4} gap={5} alignContent={"center"}>
-        {todolists.map((tl) => {
-          return (
-            <Grid key={tl.id}>
-              <Paper sx={{ p: "0 40px 40px 40px" }}>
-                <Todolist todolist={tl} tasks={tasks[tl.id]} />
-              </Paper>
-            </Grid>
-          );
-        })}
+        {mappedTodolists}
       </Grid>
     </>
   );

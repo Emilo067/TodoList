@@ -13,6 +13,7 @@ import { useAppDispatch } from "common/hooks/useAppDispatch";
 import { Paginator } from "features/Paginator/ui/Paginator";
 import { useSelector } from "react-redux";
 import { AppRootStateType } from "app/store/store";
+import Paper from "@mui/material/Paper";
 
 type Props = {
   todolist: TodolistDomainType;
@@ -42,7 +43,16 @@ export const Todolist = memo(({ todolist, tasks }: Props) => {
   };
 
   return (
-    <div>
+    <Paper
+      style={{
+        padding: "20px",
+        position: "relative",
+        width: "300px",
+        wordWrap: "break-word",
+      }}
+      elevation={3}
+      sx={{ p: "0 40px 40px 40px" }}
+    >
       <TodolistTitle todolist={todolist} />
       <AddItemForm addItem={addTaskHandler} disabled={todolist.entityStatus === "loading"} />
       <TasksList tasksForTodolist={tasksForTodolist} todolist={todolist} />
@@ -50,6 +60,6 @@ export const Todolist = memo(({ todolist, tasks }: Props) => {
         <FilterTasksButtons todolist={todolist} />
       </Box>
       {totalCount > 3 && <Paginator totalCount={totalCount} todolistId={todolist.id} />}
-    </div>
+    </Paper>
   );
 });

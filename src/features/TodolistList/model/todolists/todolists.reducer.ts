@@ -1,5 +1,5 @@
 import { todolistApi } from "features/TodolistList/api/todolistApi";
-import { appActions, RequestStatusType } from "app/model/app.reducer";
+import { RequestStatusType } from "app/model/app.reducer";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createAppAsyncThunk, handleServerAppError, thunkTryCatch } from "common/utils";
 import { TodolistType } from "features/TodolistList/api/todolistApi.types";
@@ -15,7 +15,7 @@ const slice = createSlice({
         todo.filter = action.payload.filter;
       }
     },
-    clearData: (state, action: PayloadAction) => {
+    clearData: () => {
       return [];
     },
     changeTodolistEntityStatus: (state, action: PayloadAction<{ id: string; status: RequestStatusType }>) => {
@@ -57,6 +57,7 @@ const fetchTodolists = createAppAsyncThunk<
   void
 >(`${slice.name}/fetchTodolists`, async (_, thunkApi) => {
   const res = await todolistApi.getTodolists();
+  thunkApi.dispatch(todolistsActions.clearData());
   const todolists = res.data;
   return { todolists };
 });
