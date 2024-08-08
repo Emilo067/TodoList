@@ -53,7 +53,7 @@ export const TodolistsList: React.FC = () => {
         <AddItemForm addItem={addTodolistHandler} />
       </Grid>
 
-      <Grid container spacing={4} gap={5} alignContent={"center"}>
+      <Grid container spacing={4} gap={5} justifyContent={"center"}>
         {mappedTodolists}
       </Grid>
     </>
